@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+    crossorigin="anonymous"
+  ></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-success fixed-top">
+        <div class="container">
+            <a href="#" class="navbar-brand text-light display-5 fw-bold p-4">Travelex</a>
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#n_bar" aria-controls="navbarNavAltMarkup" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="n_bar">
+                <ul class="navbar-nav mt-2">
+                    <li class="nav-item active display-7 p-3"><a class="nav-link text-light hover-underline" href="#">Home</a></li>
+                    <li class="nav-item display-7 p-3"><a class="nav-link text-light hover-underline" href="#">Book</a></li>
+                    <li class="nav-item display-7 p-3"><a class="nav-link text-light hover-underline" href="index.html">SignUp</a></li>
+                    <li class="nav-item display-7 p-3"><a class="nav-link text-light hover-underline" href="#">About</a></li> 
+                </ul>
+            </div>
+        </div>
+    </nav>     <!--Already have an account? login feature add-->
+
+    <div class="container mt-5 pt-5">
+        <h2 class="mb-4">Register Yourself!!</h2>
+        <form id="registrationForm" action="success.html">
+            <fieldset class="scheduler-border p-3">
+                <legend class="scheduler-border">Personal Details</legend><br>
+    
+                <div class="mb-3">
+                    <label for="fname">Name:</label>
+                    <input type="text" id="fname" class="form-control" placeholder="Enter your name">
+                    <div class="feedback invalid-feedback">Name must be at least 3 characters long and contain only alphabetic characters and spaces.</div>
+                    <div class="feedback valid-feedback">Name looks good!</div>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="mail">Email:</label>
+                    <input type="email" id="mail" class="form-control" placeholder="Enter your email">
+                    <div class="feedback invalid-feedback">Please enter a valid email address.</div>
+                    <div class="feedback valid-feedback">Email looks good!</div>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="pass">Password:</label>
+                    <input type="password" id="pass" class="form-control" placeholder="password">
+                    <div class="feedback invalid-feedback">Password must be at least 8 characters long and contain both letters and numbers.</div>
+                    <div class="feedback valid-feedback">Password is valid!</div>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="cpass">Confirm Password:</label>
+                    <input type="password" id="cpass" class="form-control" placeholder="password">
+                    <div class="feedback invalid-feedback">Passwords do not match.</div>
+                    <div class="feedback valid-feedback">Passwords match!</div>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="phone">Phone:</label>
+                    <input type="number" id="phone" class="form-control" placeholder="phone number">
+                </div>
+    
+                <div class="mb-3">
+                    <label for="birth">Date of birth:</label>
+                    <input type="date" id="birth" class="form-control">
+                    <div class="feedback invalid-feedback">You must be at least 18 years old.</div>
+                    <div class="feedback valid-feedback">Age is valid!</div>
+                </div>
+    
+                <button type="submit" id="submitBtn" class="btn btn-success">Submit</button>
+                <button type="reset" class="btn btn-secondary">Clear</button>
+                <p class="text-end">Already have an account? <a href="login.html" class="loglink">Login</a></p>
+            </fieldset>
+            
+        </form>
+        
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('registrationForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const nameInput = document.getElementById('fname');
+            const emailInput = document.getElementById('mail');
+            const passwordInput = document.getElementById('pass');
+            const confirmPasswordInput = document.getElementById('cpass');
+            const birthInput = document.getElementById('birth');
+    
+            function validateName() {
+                const name = nameInput.value.trim();
+                const regex = /^[a-zA-Z\s]{3,}$/;
+                return regex.test(name);
+            }
+    
+            function validateEmail() {
+                const email = emailInput.value.trim();
+                const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                return regex.test(email);
+            }
+    
+            function validatePassword() {
+                const password = passwordInput.value;
+                const regex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+                return regex.test(password);
+            }
+    
+            function validateConfirmPassword() {
+                return passwordInput.value === confirmPasswordInput.value;
+            }
+    
+            function validateAge() {
+                const birthDate = new Date(birthInput.value);
+                const today = new Date();
+                const age = today.getFullYear() - birthDate.getFullYear();
+                const monthDifference = today.getMonth() - birthDate.getMonth();
+    
+                if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                    return age - 1 >= 18;
+                }
+    
+                return age >= 18;
+            }
+    
+            function validateForm() {
+                const isNameValid = validateName();
+                const isEmailValid = validateEmail();
+                const isPasswordValid = validatePassword();
+                const isConfirmPasswordValid = validateConfirmPassword();
+                const isAgeValid = validateAge();
+    
+                // Toggle validation styles and messages
+                toggleValidationStyles(nameInput, isNameValid);
+                toggleValidationStyles(emailInput, isEmailValid);
+                toggleValidationStyles(passwordInput, isPasswordValid);
+                toggleValidationStyles(confirmPasswordInput, isConfirmPasswordValid);
+                toggleValidationStyles(birthInput, isAgeValid);
+    
+                return isNameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid && isAgeValid;
+            }
+    
+            function toggleValidationStyles(input, isValid) {
+                const invalidFeedback = input.nextElementSibling;
+                const validFeedback = invalidFeedback.nextElementSibling;
+    
+                if (isValid) {
+                    input.classList.remove('invalid');
+                    input.classList.add('valid');
+                    invalidFeedback.style.display = 'none';
+                    validFeedback.style.display = 'block';
+                } else {
+                    input.classList.remove('valid');
+                    input.classList.add('invalid');
+                    invalidFeedback.style.display = 'block';
+                    validFeedback.style.display = 'none';
+                }
+            }
+    
+            form.addEventListener('input', function () {
+                validateForm();
+            });
+    
+            form.addEventListener('submit', function (e) {
+                if (!validateForm()) {
+                    e.preventDefault();
+                }
+                
+            });
+        });
+        </script>
+
+    <!-- <div class="form">
+        <h2>Register Yourself!!</h2>
+        <form action="success.html" class="form_contents">
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border">Personal Details</legend><br>
+            <label for="fname">Name:</label><br>
+            <input type="text" class="name" placeholder="" style="background-image: url('icon.png'); background-repeat: no-repeat; background-position: left center;"><br><br>
+            <label for="mail">Email:</label><br>
+            <input type="email" class="email"><br><br>
+            <label for="pass">Password:</label><br>
+            <input type="password" class="password"><br><br>
+            <label for="cpass">Confirm:</label><br>
+            <input type="password" class="cpassword"><br><br>
+            <label for="phone">Phone:</label><br>
+            <input type="number" class="phone"><br><br>
+            <label for="birth">Date of birth:</label><br>
+            <input type="date" class="dbirth"><br><br>
+            <input type="submit" value="Submit" class="sbn">
+            <input type="reset" value="Clear" class="clr">
+        </fieldset>
+        </form>
+    </div> -->
+</body>
+</html>
