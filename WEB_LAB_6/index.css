@@ -58,11 +58,11 @@ legend.scheduler-border {
      
     text-align: left !important;
 }
-.valid {
+input.valid {
     border-color: green;
 }
 
-.invalid {
+input.invalid {
     border-color: red;
 }
 
